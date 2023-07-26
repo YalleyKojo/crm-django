@@ -1,0 +1,28 @@
+{%extends 'base.html'%}
+{%block content%}
+<br/>
+<div class="card" style="width: 25rem;">
+    <div class="card-body">
+      <h5 class="card-title">{{record.first_name}} {{record.last_name}}</h5>
+      
+      <p class="card-text">
+        id:{{record.id}}<br/>
+       Email: {{record.email}}<br/>
+        Phone:    {{record.phone}}<br/>
+         Address:   {{record.address}}<br/>
+        City:    {{record.city}}<br/>
+          State:  {{record.state}}<br/>
+          zipcode:  {{record.zipcode}}<br/>
+          created at: {{record.created_at}}
+    </p>
+      
+    </div>
+  </div>
+  <br/>
+  <a href="{%url 'home' %}"><button type="button"  class="btn btn-dark">Back</button>
+  </a>
+  <a href="{%url 'update_record' record.id %}"><button type="button"  class="btn btn-dark">Update</button>
+  </a>
+  <a href="{%url 'delete_record' record.id %}"><button type="button" class="btn btn-danger">Delete</button></a>
+
+{%endblock%}

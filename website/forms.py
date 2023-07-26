@@ -2,7 +2,7 @@ from typing import Any
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
 from django.contrib.auth.models import User
-
+from .models import Record
 class SignUpForm(UserCreationForm):
     email=forms.EmailField(label='',widget=forms.TextInput(attrs={'class':'form-control',
                                                                   'placeholder':'Email address'
@@ -39,3 +39,24 @@ class SignUpForm(UserCreationForm):
             self.fields['password2'].label = ''
             self.fields['password2'].help_text = '<span class="form-text text-muted"><small>Enter the same password as before, for verification.</small></span>'	
     
+class Recordform(forms.ModelForm):
+      first_name=forms.CharField(required=True,widget=forms.widgets.TextInput(attrs={'class':'form-control',
+                                                                             'placeholder':'first name'}),label='')   
+      last_name=forms.CharField(required=True,widget=forms.widgets.TextInput(attrs={'class':'form-control',
+                                                                             'placeholder':'Last name'}),label='') 
+      email=forms.EmailField(required=True,widget=forms.widgets.TextInput(attrs={'class':'form-control',
+                                                                             'placeholder':'Email'}),label='')   
+      phone=forms.CharField(required=True,widget=forms.widgets.TextInput(attrs={'class':'form-control',
+                                                                             'placeholder':'Phone'}),label='')   
+      address=forms.CharField(required=True,widget=forms.widgets.TextInput(attrs={'class':'form-control',
+                                                                             'placeholder':'Address'}),label='')   
+      city=forms.CharField(required=True,widget=forms.widgets.TextInput(attrs={'class':'form-control',
+                                                                             'placeholder':'City'}),label='')   
+      state=forms.CharField(required=True,widget=forms.widgets.TextInput(attrs={'class':'form-control',
+                                                                             'placeholder':'State'}),label='')   
+      zipcode=  forms.CharField(required=True,widget=forms.widgets.TextInput(attrs={'class':'form-control',
+                                                                             'placeholder':'zip code'}),label='')
+
+      class Meta:
+            model=   Record
+            exclude={'user',}
